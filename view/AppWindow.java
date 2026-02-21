@@ -17,6 +17,8 @@ import javax.swing.border.TitledBorder;
 import controller.AddButtionListener;
 import controller.App;
 import controller.ClearButtonListener;
+import controller.KeyEventHandler;
+import controller.MouseEventHandler;
 import controller.QtyItemListener;
 import controller.RemoveButtonListener;
 import controller.ShapeButtonListener;
@@ -39,6 +41,10 @@ public class AppWindow extends JFrame {
     public void init() {
         Container cp = getContentPane();
         cp.add(canvas, BorderLayout.CENTER);
+        var mouseListener = new MouseEventHandler();
+        canvas.addMouseListener(mouseListener);
+        canvas.addKeyListener(new KeyEventHandler());
+        // canvas.addMouseMotionListener(mouseListener);
 
         // shape selection
         JPanel shapePanel = new JPanel();
@@ -88,6 +94,17 @@ public class AppWindow extends JFrame {
         southPanel.add(removeClearPanel);
 
         cp.add(southPanel, BorderLayout.SOUTH);
+
+        // focus on key event
+        canvas.setFocusable(true);
+        addButton.setFocusable(false);
+        qtyComboBox.setFocusable(false);
+        removeButton.setFocusable(false);
+        clearButton.setFocusable(false);
+        for (var b : shapeButtons) {
+            b.setFocusable(false);
+        }
+
     }
 
     public void repaintCanvas() {
