@@ -42,7 +42,7 @@ public class KeyEventHandler implements KeyListener {
             var shape = (MyShape) s;
             shape.translate(dx, dy);
         } else if (s instanceof StadiumShape) {
-            var shape = (MyShape) s;
+            var shape = (StadiumShape) s;
             shape.translate(dx, dy);
         }
         App.win.repaintCanvas();

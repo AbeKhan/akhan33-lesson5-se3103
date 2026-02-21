@@ -12,8 +12,8 @@ public class StadiumShape implements Containable {
     }
 
     public void translate(double dx, double dy) {
-        this.x = dx;
-        this.y = dy;
+        this.x += dx;
+        this.y += dy;
     }
 
     @Override
